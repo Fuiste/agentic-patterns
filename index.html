@@ -1,0 +1,55 @@
+---
+layout: default
+title: Home
+---
+<div class="container">
+  <div class="home-header">
+    <h1 class="home-title">Agentic Patterns</h1>
+    <p class="home-subtitle">Battle-tested patterns for building software with AI coding agents. A field guide from the trenches.</p>
+  </div>
+
+  {% assign posts = site.posts %}
+  {% if posts.size > 0 %}
+  <p class="posts-section-title">Latest Patterns</p>
+  <ul class="post-list">
+    {% for post in posts %}
+    <li class="post-item">
+      <a href="{{ post.url | relative_url }}" class="post-link">
+        {% if post.tags.size > 0 %}
+        <div class="post-link-tags">
+          {% for tag in post.tags limit:2 %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <h2 class="post-link-title">{{ post.title }}</h2>
+        {% if post.excerpt %}
+        <p class="post-link-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+        {% endif %}
+        <span class="post-link-meta">
+          {{ post.date | date: "%B %-d, %Y" }} &middot; {{ post.content | number_of_words | divided_by: 200 | plus: 1 }} min read
+        </span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% if paginator.total_pages > 1 %}
+  <nav class="pagination">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&larr; Newer</a>
+    {% endif %}
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">Older &rarr;</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+
+  {% else %}
+  <div class="empty-state">
+    <div class="empty-state-icon">&#9670;</div>
+    <p>Patterns are being documented.</p>
+    <p class="empty-sub">First posts coming soon.</p>
+  </div>
+  {% endif %}
+</div>

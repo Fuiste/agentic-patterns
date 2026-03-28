@@ -1,0 +1,53 @@
+title: Agentic Patterns
+description: >-
+  Battle-tested patterns for building software with AI coding agents.
+  A field guide from the trenches of agentic development.
+url: "https://fuiste.github.io"
+baseurl: "/agentic-patterns"
+author:
+  name: William Pelrine
+  url: https://github.com/Fuiste
+
+permalink: /:title/
+paginate: 10
+paginate_path: "/page/:num/"
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+
+collections_dir: ""
+
+twitter:
+  card: summary_large_image
+
+social:
+  name: William Pelrine
+  links:
+    - https://github.com/Fuiste
